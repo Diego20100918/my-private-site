@@ -1,5 +1,5 @@
 
-const validPasswords = ["abc123", "xyz789", "hello2025"];
+const validPasswords = ["hello2025"];
 
 function checkPswd() {
   let input = document.getElementById("pswd").value;
