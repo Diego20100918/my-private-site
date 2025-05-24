@@ -1,40 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>玩具紀念冊</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>檔案下載</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f5f5f5;
+    }
+    h1 {
+      font-size: 24px;
+      color: #333;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    a.download-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 6px;
+      margin-top: 30px;
+    }
+    a.download-btn:hover {
+      background: #0056b3;
+    }
+  </style>
 </head>
 <body>
+  <h1>歡迎進入網站</h1>
+
   <div id="loginDiv">
-    <h2>請輸入密碼進入玩具紀念冊</h2>
-    <input type="password" id="pswd" placeholder="輸入密碼">
-    <button onclick="checkPswd()">登入</button>
+    <p>請輸入密碼以下載檔案：</p>
+    <input type="password" id="pswd" placeholder="輸入密碼"/>
+    <br>
+    <button onclick="checkPassword()">確認</button>
   </div>
 
-  <div id="gallery" style="display:none;">
-    <h2>🎉 歡迎進入玩具紀念冊</h2>
-    <div class="gallery">
-      <img src="images/photo2.png" alt="photo2" onclick="openLightbox(this.src)">
-      <img src="images/photo1.png" alt="photo1" onclick="openLightbox(this.src)">
-    </div>
+  <div id="downloadDiv" class="hidden">
+    <h2>✅ 密碼正確</h2>
+    <a href="files/yourfile.zip" download class="download-btn">📦 下載 ZIP 檔</a>
   </div>
 
-<h3>下載區</h3>
-<a href="files/notes2025.zip" download>
-  <button>📦 下載（ZIP）</button>
-</a>
+  <script>
+    const correctPassword = "abc123";  // ← 這裡改你自己的密碼
 
-  <div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img" src="">
-  </div>
-
-  <script src="js/main.js"></script>
+    function checkPassword() {
+      const input = document.getElementById("pswd").value;
+      if (input === correctPassword) {
+        document.getElementById("loginDiv").style.display = "none";
+        document.getElementById("downloadDiv").classList.remove("hidden");
+      } else {
+        alert("密碼錯誤！");
+      }
+    }
+  </script>
 </body>
 </html>
-<video controls width="100%">
-  <source src="videos/myvideo.mp4" type="video/mp4">
-  您的瀏覽器不支援影片播放。
-</video>
